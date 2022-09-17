@@ -18,7 +18,7 @@ dataset = pd.DataFrame({
     'okure': lst_okure,
     'keikaku': lst_keikaku})
 
-def make_bar_plot(dataset, date_column, plan_column):
+def make_bar_plot(dataset, date_column, plan_column, title='plan_vs_result_daily'):
     fig, ax = plt.subplots(1,1,figsize=(14,2))
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%m/%d'))
     lst_column = dataset.columns.to_list()
@@ -40,6 +40,7 @@ def make_bar_plot(dataset, date_column, plan_column):
             counter += 1
     ax.set_xticks(dataset[date_column])
     ax.legend()
+    ax.set_title(title)
     plt.show()
 if __name__ == '__main__':
     make_bar_plot(dataset, date_column='date', plan_column='keikaku')
